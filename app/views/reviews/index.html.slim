@@ -1,2 +1,28 @@
-h1 Reviews#index
-p Find me in app/views/reviews/index.html.slim
+h1 レビューの一覧
+
+= link_to 'タスクの一覧', tasks_path, class: 'btn btn-primary'
+
+
+= turbo_frame_tag 'reviews' ,class: 'mb-3' do
+  table.table.table-hover
+    thead.thead-default
+      tr
+        th = Review.human_attribute_name(:title)
+        th = Review.human_attribute_name(:content)
+        th = Review.human_attribute_name(:created_at)
+    tbody
+        - @reviews.each do |review|
+          tr id= "#{dom_id review}"
+            td = review.title
+            td = review.content
+            td = review.created_at
+
+
+=form_with model: @review, local: true do |f|
+  .form-group
+    =f.label :title
+    =f.text_field :title, class: 'form-control', id: 'review_title'
+  .form-group
+    = f.label :content
+    = f.text_area :content ,class: 'form-control', id: 'review_content',rows: 5
+  = f.submit nil ,class: 'btn btn-primary'

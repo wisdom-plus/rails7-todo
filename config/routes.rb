@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  get 'reviews/index'
-  get 'reviews/create'
+  resources :reviews, only: [:index,:create,:destroy]
   resources :tasks
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
 end
