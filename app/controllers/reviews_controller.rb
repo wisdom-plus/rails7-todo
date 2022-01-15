@@ -12,8 +12,8 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    review = Review.find_by(params[:id])
-    review.destory
+    review = Review.find_by(id: params[:id])
+    review.destroy
     @reviews = Review.all
     render turbo_stream: turbo_stream.replace('reviews', partial: 'append')
   end

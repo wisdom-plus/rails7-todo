@@ -16,6 +16,8 @@ h1 レビューの一覧
             td = review.title
             td = review.content
             td = review.created_at
+            td
+              = link_to '削除',review_path(review.id), class: 'btn btn-danger', data: {turbo_method: :delete, turbo_confirm: "レビューを「#{review.id}」削除しました。"}
 
 
 =form_with model: @review, local: true do |f|

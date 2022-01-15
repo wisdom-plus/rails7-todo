@@ -11,3 +11,5 @@
             td = review.title
             td = review.content
             td = review.created_at
+            td
+              = link_to '削除',review_path(review.id), class: 'btn btn-danger', data: {turbo_method: :delete, turbo_confirm: "レビューを「#{review.id}」削除しました。"}
