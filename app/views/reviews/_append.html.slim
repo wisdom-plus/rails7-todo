@@ -1,15 +1,2 @@
-= turbo_frame_tag 'reviews' do
-  table.table.table-hover
-    thead.thead-default
-      tr
-        th = Review.human_attribute_name(:title)
-        th = Review.human_attribute_name(:content)
-        th = Review.human_attribute_name(:created_at)
-    tbody
-        - @reviews.each do |review|
-          tr id= "#{dom_id review}"
-            td = review.title
-            td = review.content
-            td = review.created_at
-            td
-              = link_to '削除',review_path(review.id), class: 'btn btn-danger', data: {turbo_method: :delete, turbo_confirm: "レビューを「#{review.id}」削除しました。"}
+= turbo_frame_tag 'reviews' ,class: 'mb-3' do
+  = render partial: 'shared/review', locals: {reviews: @reviews}
